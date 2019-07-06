@@ -1,4 +1,4 @@
-# zID:z5129269 Mingyue Wei
+# Mingyue Wei
 from flask import Flask,jsonify,request,url_for
 import json,datetime
 
