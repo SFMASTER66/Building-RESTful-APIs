@@ -1,0 +1,1144 @@
+<!--zID:5129269 Mingyue Wei-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta name="generator" content="AsciiDoc 8.6.9" />
+    <title>How to make a coffee API Documentation</title>
+    <style type="text/css">
+        body {
+            font-family: Georgia,serif;
+        }
+        h1, h2, h3, h4, h5, h6,
+        div.title, caption.title,
+        thead, p.table.header,
+        #toctitle,
+        #author, #revnumber, #revdate, #revremark,
+        #footer {
+            font-family: Arial,Helvetica,sans-serif;
+        }
+        body {
+            margin: 1em 5% 1em 5%;
+        }
+        #url-desc{
+            margin-top: 25px;
+        }
+        a {
+            color: blue;
+            text-decoration: underline;
+        }
+        a:visited {
+            color: fuchsia;
+        }
+        em {
+            font-style: italic;
+            color: navy;
+        }
+        strong {
+            font-weight: bold;
+            color: #083194;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #527bbd;
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+            line-height: 1.3;
+        }
+        h1, h2, h3 {
+            border-bottom: 2px solid silver;
+        }
+        h2 {
+            padding-top: 0.5em;
+        }
+        h3 {
+            float: left;
+        }
+        h3 + * {
+            clear: left;
+        }
+        h5 {
+            font-size: 1.0em;
+        }
+        div.sectionbody {
+            margin-left: 0;
+        }
+        hr {
+            border: 1px solid silver;
+        }
+        p {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        ul, ol, li > p {
+            margin-top: 0;
+        }
+        ul > li     { color: #aaa; }
+        ul > li > * { color: black; }
+        .monospaced, code, pre {
+            font-family: "Courier New", Courier, monospace;
+            font-size: inherit;
+            color: navy;
+            padding: 0;
+            margin: 0;
+        }
+        pre {
+            white-space: pre-wrap;
+        }
+        #author {
+            color: #527bbd;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        #email {
+        }
+        #revnumber, #revdate, #revremark {
+        }
+        #footer {
+            font-size: small;
+            border-top: 2px solid silver;
+            padding-top: 0.5em;
+            margin-top: 4.0em;
+        }
+        #footer-text {
+            float: left;
+            padding-bottom: 0.5em;
+        }
+        #footer-badges {
+            float: right;
+            padding-bottom: 0.5em;
+        }
+        #preamble {
+            margin-top: 1.5em;
+            margin-bottom: 1.5em;
+        }
+        div.imageblock, div.exampleblock, div.verseblock,
+        div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+        div.admonitionblock {
+            margin-top: 1.0em;
+            margin-bottom: 1.5em;
+        }
+        div.admonitionblock {
+            margin-top: 2.0em;
+            margin-bottom: 2.0em;
+            margin-right: 10%;
+            color: #606060;
+        }
+        div.content {
+            padding: 0;
+        }
+        /* Block element titles. */
+        div.title, caption.title {
+            color: #527bbd;
+            font-weight: bold;
+            text-align: left;
+            margin-top: 1.0em;
+            margin-bottom: 0.5em;
+        }
+        div.title + * {
+            margin-top: 0;
+        }
+        td div.title:first-child {
+            margin-top: 0.0em;
+        }
+        div.content div.title:first-child {
+            margin-top: 0.0em;
+        }
+        div.content + div.title {
+            margin-top: 0.0em;
+        }
+        div.sidebarblock > div.content {
+            background: #ffffee;
+            border: 1px solid #dddddd;
+            border-left: 4px solid #f0f0f0;
+            padding: 0.5em;
+        }
+        div.listingblock > div.content {
+            border: 1px solid #dddddd;
+            border-left: 5px solid #f0f0f0;
+            background: #f8f8f8;
+            padding: 0.5em;
+        }
+        div.quoteblock, div.verseblock {
+            padding-left: 1.0em;
+            margin-left: 1.0em;
+            margin-right: 10%;
+            border-left: 5px solid #f0f0f0;
+            color: #888;
+        }
+        div.quoteblock > div.attribution {
+            padding-top: 0.5em;
+            text-align: right;
+        }
+        div.verseblock > pre.content {
+            font-family: inherit;
+            font-size: inherit;
+        }
+        div.verseblock > div.attribution {
+            padding-top: 0.75em;
+            text-align: left;
+        }
+        div.verseblock + div.attribution {
+            text-align: left;
+        }
+        div.admonitionblock .icon {
+            vertical-align: top;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: underline;
+            color: #527bbd;
+            padding-right: 0.5em;
+        }
+        div.admonitionblock td.content {
+            padding-left: 0.5em;
+            border-left: 3px solid #dddddd;
+        }
+        div.exampleblock > div.content {
+            border-left: 3px solid #dddddd;
+            padding-left: 0.5em;
+        }
+        div.imageblock div.content { padding-left: 0; }
+        span.image img { border-style: none; vertical-align: text-bottom; }
+        a.image:visited { color: white; }
+        dl {
+            margin-top: 0.8em;
+            margin-bottom: 0.8em;
+        }
+        dt {
+            margin-top: 0.5em;
+            margin-bottom: 0;
+            font-style: normal;
+            color: navy;
+        }
+        dd > *:first-child {
+            margin-top: 0.1em;
+        }
+        ul, ol {
+            list-style-position: outside;
+        }
+        ol.arabic {
+            list-style-type: decimal;
+        }
+        ol.loweralpha {
+            list-style-type: lower-alpha;
+        }
+        ol.upperalpha {
+            list-style-type: upper-alpha;
+        }
+        ol.lowerroman {
+            list-style-type: lower-roman;
+        }
+        ol.upperroman {
+            list-style-type: upper-roman;
+        }
+        div.compact ul, div.compact ol,
+        div.compact p, div.compact p,
+        div.compact div, div.compact div {
+            margin-top: 0.1em;
+            margin-bottom: 0.1em;
+        }
+        tfoot {
+            font-weight: bold;
+        }
+        td > div.verse {
+            white-space: pre;
+        }
+        div.hdlist {
+            margin-top: 0.8em;
+            margin-bottom: 0.8em;
+        }
+        div.hdlist tr {
+            padding-bottom: 15px;
+        }
+        dt.hdlist1.strong, td.hdlist1.strong {
+            font-weight: bold;
+        }
+        td.hdlist1 {
+            vertical-align: top;
+            font-style: normal;
+            padding-right: 0.8em;
+            color: navy;
+        }
+        td.hdlist2 {
+            vertical-align: top;
+        }
+        div.hdlist.compact tr {
+            margin: 0;
+            padding-bottom: 0;
+        }
+        .comment {
+            background: yellow;
+        }
+        .footnote, .footnoteref {
+            font-size: 0.8em;
+        }
+        span.footnote, span.footnoteref {
+            vertical-align: super;
+        }
+        #footnotes {
+            margin: 20px 0 20px 0;
+            padding: 7px 0 0 0;
+        }
+        #footnotes div.footnote {
+            margin: 0 0 5px 0;
+        }
+        #footnotes hr {
+            border: none;
+            border-top: 1px solid silver;
+            height: 1px;
+            text-align: left;
+            margin-left: 0;
+            width: 20%;
+            min-width: 100px;
+        }
+        div.colist td {
+            padding-right: 0.5em;
+            padding-bottom: 0.3em;
+            vertical-align: top;
+        }
+        div.colist td img {
+            margin-top: 0.3em;
+        }
+        @media print {
+            #footer-badges { display: none; }
+        }
+        #toc {
+            margin-bottom: 2.5em;
+        }
+        #toctitle {
+            color: #527bbd;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 1.0em;
+            margin-bottom: 0.1em;
+        }
+        div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        div.toclevel2 {
+            margin-left: 2em;
+            font-size: 0.9em;
+        }
+        div.toclevel3 {
+            margin-left: 4em;
+            font-size: 0.9em;
+        }
+        div.toclevel4 {
+            margin-left: 6em;
+            font-size: 0.9em;
+        }
+        span.aqua { color: aqua; }
+        span.black { color: black; }
+        span.blue { color: blue; }
+        span.fuchsia { color: fuchsia; }
+        span.gray { color: gray; }
+        span.green { color: green; }
+        span.lime { color: lime; }
+        span.maroon { color: maroon; }
+        span.navy { color: navy; }
+        span.olive { color: olive; }
+        span.purple { color: purple; }
+        span.red { color: red; }
+        span.silver { color: silver; }
+        span.teal { color: teal; }
+        span.white { color: white; }
+        span.yellow { color: yellow; }
+        span.aqua-background { background: aqua; }
+        span.black-background { background: black; }
+        span.blue-background { background: blue; }
+        span.fuchsia-background { background: fuchsia; }
+        span.gray-background { background: gray; }
+        span.green-background { background: green; }
+        span.lime-background { background: lime; }
+        span.maroon-background { background: maroon; }
+        span.navy-background { background: navy; }
+        span.olive-background { background: olive; }
+        span.purple-background { background: purple; }
+        span.red-background { background: red; }
+        span.silver-background { background: silver; }
+        span.teal-background { background: teal; }
+        span.white-background { background: white; }
+        span.yellow-background { background: yellow; }
+        span.big { font-size: 2em; }
+        span.small { font-size: 0.6em; }
+        span.underline { text-decoration: underline; }
+        span.overline { text-decoration: overline; }
+        span.line-through { text-decoration: line-through; }
+        div.unbreakable { page-break-inside: avoid; }
+
+        div.tableblock {
+            margin-top: 1.0em;
+            margin-bottom: 1.5em;
+        }
+        div.tableblock > table {
+            border: 3px solid #527bbd;
+        }
+        thead, p.table.header {
+            font-weight: bold;
+            color: #527bbd;
+        }
+        p.table {
+            margin-top: 0;
+        }
+        div.tableblock > table[frame="void"] {
+            border-style: none;
+        }
+        div.tableblock > table[frame="hsides"] {
+            border-left-style: none;
+            border-right-style: none;
+        }
+        div.tableblock > table[frame="vsides"] {
+            border-top-style: none;
+            border-bottom-style: none;
+        }
+
+        table.tableblock {
+            margin-top: 1.0em;
+            margin-bottom: 1.5em;
+        }
+        thead, p.tableblock.header {
+            font-weight: bold;
+            color: #527bbd;
+        }
+        p.tableblock {
+            margin-top: 0;
+        }
+        table.tableblock {
+            border-width: 3px;
+            border-spacing: 0px;
+            border-style: solid;
+            border-color: #527bbd;
+            border-collapse: collapse;
+        }
+        th.tableblock, td.tableblock {
+            border-width: 1px;
+            padding: 4px;
+            border-style: solid;
+            border-color: #527bbd;
+        }
+        table.tableblock.frame-topbot {
+            border-left-style: hidden;
+            border-right-style: hidden;
+        }
+        table.tableblock.frame-sides {
+            border-top-style: hidden;
+            border-bottom-style: hidden;
+        }
+        table.tableblock.frame-none {
+            border-style: hidden;
+        }
+        th.tableblock.halign-left, td.tableblock.halign-left {
+            text-align: left;
+        }
+        th.tableblock.halign-center, td.tableblock.halign-center {
+            text-align: center;
+        }
+        th.tableblock.halign-right, td.tableblock.halign-right {
+            text-align: right;
+        }
+        th.tableblock.valign-top, td.tableblock.valign-top {
+            vertical-align: top;
+        }
+        th.tableblock.valign-middle, td.tableblock.valign-middle {
+            vertical-align: middle;
+        }
+        th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+            vertical-align: bottom;
+        }
+
+        body.manpage h1 {
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            border-top: 2px solid silver;
+            border-bottom: 2px solid silver;
+        }
+        body.manpage h2 {
+            border-style: none;
+        }
+        body.manpage div.sectionbody {
+            margin-left: 3em;
+        }
+        @media print {
+            body.manpage div#toc { display: none; }
+        }
+        @media screen {
+            body {
+                max-width: 50em; /* approximately 80 characters wide */
+                margin-left: 16em;
+            }
+            #toc {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 13em;
+                padding: 0.5em;
+                padding-bottom: 1.5em;
+                margin: 0;
+                overflow: auto;
+                border-right: 3px solid #f8f8f8;
+                background-color: white;
+            }
+            #toc .toclevel1 {
+                margin-top: 0.5em;
+            }
+            #toc .toclevel2 {
+                margin-top: 0.25em;
+                display: list-item;
+                color: #aaaaaa;
+            }
+            #toctitle {
+                margin-top: 0.5em;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        var asciidoc = {
+            toc: function (toclevels) {
+                function getText(el) {
+                    var text = "";
+                    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+                        if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+                            text += i.data;
+                        else if (i.firstChild != null)
+                            text += getText(i);
+                    }
+                    return text;
+                }
+                function TocEntry(el, text, toclevel) {
+                    this.element = el;
+                    this.text = text;
+                    this.toclevel = toclevel;
+                }
+                function tocEntries(el, toclevels) {
+                    var result = new Array;
+                    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+
+                    var iterate = function (el) {
+                        for (var i = el.firstChild; i != null; i = i.nextSibling) {
+                            if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+                                var mo = re.exec(i.tagName);
+                                if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+                                    result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+                                }
+                                iterate(i);
+                            }
+                        }
+                    }
+                    iterate(el);
+                    return result;
+                }
+                var toc = document.getElementById("toc");
+                if (!toc) {
+                    return;
+                }
+                // Delete existing TOC entries in case we're reloading the TOC.
+                var tocEntriesToRemove = [];
+                var i;
+                for (i = 0; i < toc.childNodes.length; i++) {
+                    var entry = toc.childNodes[i];
+                    if (entry.nodeName.toLowerCase() == 'div'
+                            && entry.getAttribute("class")
+                            && entry.getAttribute("class").match(/^toclevel/))
+                        tocEntriesToRemove.push(entry);
+                }
+                for (i = 0; i < tocEntriesToRemove.length; i++) {
+                    toc.removeChild(tocEntriesToRemove[i]);
+                }
+                // Rebuild TOC entries.
+                var entries = tocEntries(document.getElementById("content"), toclevels);
+                for (var i = 0; i < entries.length; ++i) {
+                    var entry = entries[i];
+                    if (entry.element.id == "")
+                        entry.element.id = "_toc_" + i;
+                    var a = document.createElement("a");
+                    a.href = "#" + entry.element.id;
+                    a.appendChild(document.createTextNode(entry.text));
+                    var div = document.createElement("div");
+                    div.appendChild(a);
+                    div.className = "toclevel" + entry.toclevel;
+                    toc.appendChild(div);
+                }
+                if (entries.length == 0)
+                    toc.parentNode.removeChild(toc);
+            },
+
+            footnotes: function () {
+                var i;
+                var noteholder = document.getElementById("footnotes");
+                if (!noteholder) {
+                    return;
+                }
+                var entriesToRemove = [];
+                for (i = 0; i < noteholder.childNodes.length; i++) {
+                    var entry = noteholder.childNodes[i];
+                    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+                        entriesToRemove.push(entry);
+                }
+                for (i = 0; i < entriesToRemove.length; i++) {
+                    noteholder.removeChild(entriesToRemove[i]);
+                }
+                // Rebuild footnote entries.
+                var cont = document.getElementById("content");
+                var spans = cont.getElementsByTagName("span");
+                var refs = {};
+                var n = 0;
+                for (i=0; i<spans.length; i++) {
+                    if (spans[i].className == "footnote") {
+                        n++;
+                        var note = spans[i].getAttribute("data-note");
+                        if (!note) {
+                            // Use [\s\S] in place of . so multi-line matches work.
+                            // Because JavaScript has no s (dotall) regex flag.
+                            note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+                            spans[i].innerHTML =
+                                    "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+                                    "' title='View footnote' class='footnote'>" + n + "</a>]";
+                            spans[i].setAttribute("data-note", note);
+                        }
+                        noteholder.innerHTML +=
+                                "<div class='footnote' id='_footnote_" + n + "'>" +
+                                "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+                                n + "</a>. " + note + "</div>";
+                        var id =spans[i].getAttribute("id");
+                        if (id != null) refs["#"+id] = n;
+                    }
+                }
+                if (n == 0)
+                    noteholder.parentNode.removeChild(noteholder);
+                else {
+                    // Process footnoterefs.
+                    for (i=0; i<spans.length; i++) {
+                        if (spans[i].className == "footnoteref") {
+                            var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+                            href = href.match(/#.*/)[0];  // Because IE return full URL.
+                            n = refs[href];
+                            spans[i].innerHTML =
+                                    "[<a href='#_footnote_" + n +
+                                    "' title='View footnote' class='footnote'>" + n + "</a>]";
+                        }
+                    }
+                }
+            },
+            install: function(toclevels) {
+                var timerId;
+                function reinstall() {
+                    asciidoc.footnotes();
+                    if (toclevels) {
+                        asciidoc.toc(toclevels);
+                    }
+                }
+                function reinstallAndRemoveTimer() {
+                    clearInterval(timerId);
+                    reinstall();
+                }
+                timerId = setInterval(reinstall, 500);
+                if (document.addEventListener)
+                    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+                else
+                    window.onload = reinstallAndRemoveTimer;
+            }
+        }
+        asciidoc.install(2);
+        /*]]>*/
+    </script>
+</head>
+<body class="article">
+<div id="header">
+    <h1>How to make a coffee API Documentation</h1>
+
+</div>
+<div id="content">
+    <div class="sect1">
+        <h2 id="overview">Overview</h2>
+        <div class="sectionbody">
+            <div class="paragraph"><p>The documentation covers a simple business scenario that how to make a coffee API.</p></div>
+            <div class="sect2">
+                <h3 id="media-type">Media Type support</h3>
+                <div class="paragraph"><p>All server response bodies and request bodies MUST be valid JSON Media Type messages.</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+
+        <h2 id="operations">Connection between Order and Payment</h2>
+        <div>An order and a payment share a common ID.</div>
+
+
+
+
+        <h2 id="operations">URLs and Operations</h2>
+        <div class="sectionbody">
+            <div class="paragraph"><p>Below are the URLs and the operations associated with them.</p></div>
+
+            <div class="paragraph" id="url-desc"><p>The URL(<code>/coffee/</code>) is the base URL for creating, getting, amending, cancelling orders and creating, getting payments. The following tables show all the related operations, their URLs and method.</p></div>
+
+
+
+
+
+
+
+            <div class="sect2">
+                <h3 id="task-url">Table1</h3>
+                <div class="paragraph">The table1 is for the order.</div>
+                <div class="tableblock" id="task-operations">
+                    <table rules="all"
+                           width="100%"
+                           frame="hsides"
+                           cellspacing="0" cellpadding="4">
+                        <caption class="title">Order Operations</caption>
+                        <col width="10%" />
+                        <col width="42%" />
+                        <col width="10%" />
+                        <col width="15%" />
+                        <col width="21%" />
+                        <thead>
+                        <tr>
+                            <th align="left" valign="top">Operation</th>
+                            <th align="left" valign="top">URL</th>
+                            <th align="left" valign="top">Method</th>
+                            <th align="left" valign="top">Returns </th>
+                            <th align="left" valign="top">Inputs</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">create_order</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/create/order</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>POST</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#create_order_return">create order return</a></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#create_input">create order</a></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">get_all_orders</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/get/orders</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>GET</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#get_all_order_return">get all order</a></p></td>
+                            <td align="left" valign="top"><p class="table"><code>none</code></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">get_single_order</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/get/order/{int:id}</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>GET</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#get_single_orders_return">get single order</a></p></td>
+                            <td align="left" valign="top"><p class="table"><code><a href="#get_single_order_input">get single order</a></code></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">get_all_open_orders</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/get/openorders</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>GET</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#get_all_order_return">get all open orders</a></p></td>
+                            <td align="left" valign="top"><p class="table"><code>none</code></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">get_single_open_order</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/get/openorder/{int:id}</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>GET</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#get_single_orders_return">get single open order</a></p></td>
+                            <td align="left" valign="top"><p class="table"><code><a href="#get_single_order_input">get single open order</a></code></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">update_order</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/update/order/{int:id}</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>PUT</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#update-order">update order</a></p></td>
+                            <td align="left" valign="top"><p class="table"><code><a href="#update_order_input">update</a></code></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">pickup_order</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/pickup/order/{int:id}</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>PATCH</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#pickup-order">pick up order</a></p></td>
+                            <td align="left" valign="top"><p class="table"><code><a href="#pickup_order_input">pick up</a></code></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">release_order</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/release/order/{int:id}</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>PATCH</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#release-order">release order</a></p></td>
+                            <td align="left" valign="top"><p class="table"><code><a href="#release_order_input">release</a></code></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">delete_order</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/delete/order/{int:id}</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>DELETE</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#delete-order">delete order</a></p></td>
+                            <td align="left" valign="top"><p class="table"><code><a href="#delete_order_input">delete</a></code></p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="user-url">Table2</h3>
+                <div class="paragraph">The table2 is for the payment.</div>
+                <div class="tableblock" id="user-operations">
+                    <table rules="all"
+                           width="100%"
+                           frame="hsides"
+                           cellspacing="0" cellpadding="4">
+                        <caption class="title">Payment Operations</caption>
+                        <col width="10%" />
+                        <col width="42%" />
+                        <col width="10%" />
+                        <col width="15%" />
+                        <col width="21%" />
+                        <thead>
+                        <tr>
+                            <th align="left" valign="top">Operation</th>
+                            <th align="left" valign="top">URL</th>
+                            <th align="left" valign="top">Method</th>
+                            <th align="left" valign="top">Returns</th>
+                            <th align="left" valign="top">Inputs</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">create_payment</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/payment/order/{int:id}</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>PUT</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#card-payment">Card</a> <a href="#cash-payment">Cash</a></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#card-payment-input">Card</a> <a href="#cash-payment-input">Cash</a></p></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top"><p class="table">get_payment</p></td>
+                            <td align="left" valign="top"><p class="table"><code>/coffee/get/payment/{int:id}</code></p></td>
+                            <td align="left" valign="top"><p class="table"><code>GET</code></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#card-payment">Card</a> <a href="#cash-payment">Cash</a></p></td>
+                            <td align="left" valign="top"><p class="table"><a href="#get_payment_input">Card</a> <a href="#get_payment_input">Cash</a></p></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="responses">Input</h2>
+
+        <div class="sect2">
+            <h3 id="create_input">create order input</h3>
+            <div class="listingblock">
+                <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"latte"</span><span style="color: #990000"></span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+
+            <div class="sect2">
+                <h3 id="get_single_order_input">get single order or get single open order input: add the order_id at the of the URL</h3>
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"/coffee/get/order/1"</span>
+    <span style="color: #FF0000">"/coffee/get/openorder/1"</span>
+   </tt></pre></div></div>
+
+
+                <div class="sect2">
+                    <h3 id="update_order_input">update order input</h3>
+                    <div class="listingblock">
+                        <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">latte"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"additions""</span> <span style="color: #990000">:</span> <span style="color: #990000">[</span>
+    <span style="color: #FF0000">"milk"</span>,</span>
+    <span style="color: #FF0000">"shot"</span></span>
+    <span style="color: #990000">]</span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+                    <div class="sect2">
+                        <h3 id="pickup_order_input">pick up order input: add the order_id at the of the URL</h3>
+                        <div class="listingblock">
+                            <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"/coffee/pickup/order/1"</span>
+  </tt></pre></div></div>
+
+                        <div class="sect2">
+                            <h3 id="release_order_input">release order input: add the order_id at the of the URL</h3>
+                            <div class="listingblock">
+                                <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"/coffee/release/order/1"</span>
+   </tt></pre></div></div>
+
+                    <div class="sect2">
+                        <h3 id="delete_order_input">delete order input: add the order_id at the of the URL</h3>
+                        <div class="listingblock">
+                            <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"/coffee/delete/order/1"</span>
+</tt></pre></div></div>
+
+
+                <div class="sect2">
+                    <h3 id="card-payment-input">card payment input: It is expected to add the order_id at the end of the URL</h3>
+                    <div>The card's expires date should be greater than current date. Otherwise the order can not been paid and returns a error message.</div>
+                    <div class="listingblock">
+                        <div class="content">
+                            <span style="color: #FF0000">"/coffee/payment/order/1"</span>
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"cardNo"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">43243</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"expires"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"2018-03-23"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"name"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"ming"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_payment"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"card"</span><span style="color: #990000"></span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+
+                <div class="sect2">
+                    <h3 id="cash-payment-input">cash payment input: It is expected to add the order_id at the end of the URL</h3>
+                    <div class="listingblock">
+                        <div class="content">
+                            <span style="color: #FF0000">"/coffee/payment/order/1"</span>
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"type_payment"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"cash"</span><span style="color: #990000"></span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+
+                    <div class="sect2">
+                        <h3 id="get_payment_input">get specific payment input: add the order_id at the of the URL</h3>
+                        <div class="listingblock">
+                            <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"/coffee/get/payment/1"</span>
+    </tt></pre></div></div>
+
+        <h2 id="responses">Responses</h2>
+            <div class="sect2">
+                <h3 id="create_order_return">create order return</h3>
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"additions"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">""</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"coffee_status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"not_started"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cost"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">1</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"next"</span> <span style="color: #990000">:</span> <span style="color: #FF0000"><a href="javascript:;">"/coffee/update/order/1"</a></span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"unpaid"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"latte"</span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+
+            <div class="sect2">
+                <h3 id="get_all_order_return">get all order return</h3>
+                <div>The difference between getting open orders and orders is that when the coffee has been released, the "coffee_status" is "released", then the barista can not see the released order. But the released order is still in the database.</div>
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt><span style="color: #FF0000">[</span>
+    <span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"additions"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">""</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"coffee_status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"not_started"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cost"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">1</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"next"</span> <span style="color: #990000">:</span> <span style="color: #FF0000"><a href="javascript:;">"/coffee/update/order/1"</a></span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"unpaid"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"latte"</span>
+    <span style="color: #FF0000">},</span>
+    <span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"additions"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">""</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"coffee_status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"not_started"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cost"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">4</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">2</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"next"</span> <span style="color: #990000">:</span> <span style="color: #FF0000"><a href="javascript:;">"/coffee/update/order/2"</a></span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"unpaid"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"Espresso"</span>
+    <span style="color: #FF0000">},</span>
+    <span style="color: #FF0000">]</span></tt></pre></div></div>
+
+            <div class="sect2">
+                <h3 id="get_single_orders_return">get single order return</h3>
+                <div>The difference between single order and order is it is allowed to check specific order using order_id as parameter.</div>
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"additions"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">""</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"coffee_status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"not_started"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cost"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">1</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"next"</span> <span style="color: #990000">:</span> <span style="color: #FF0000"><a href="javascript:;">"/coffee/update/order/1"</a></span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"unpaid"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"latte"</span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+
+
+                <div class="sect2">
+                    <h3 id="card-payment">create payment via card return or get card payment return</h3>
+                    <div>The Payment's amount means the Order's cost.</div>
+                    <div class="listingblock">
+                        <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"amount"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"3"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cardNo"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">43243</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"expires"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"2018-03-23"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">1</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"name"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"ming"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_payment"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"card"</span><span style="color: #990000"></span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+                    <div class="sect2">
+                        <h3 id="cash-payment">create payment via cash return or get cash payment return</h3>
+                        <div>The Payment's amount means the Order's cost.</div>
+                        <div class="listingblock">
+                            <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"amount"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"3"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">2</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_payment"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"cash"</span><span style="color: #990000"></span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+
+
+                    <div class="sect2">
+                        <h3 id="update-order">update order return</h3>
+                        <div class="listingblock">
+                            <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"additions""</span> <span style="color: #990000">:</span> <span style="color: #990000">[</span>
+    <span style="color: #FF0000">"milk"</span>,</span>
+    <span style="color: #FF0000">"shot"</span>,</span>
+    <span style="color: #990000">],</span>
+    <span style="color: #FF0000">"coffee_status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"not_started"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cost"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">2</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"next"</span> <span style="color: #990000">:</span> <span style="color: #FF0000"><a href="javascript:;">"/coffee/payment/order/2"</a></span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"unpaid"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"latte"</span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+                        <div class="sect2">
+                        <h3 id="pickup-order">pick up return</h3>
+                        <div class="listingblock">
+                            <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"additions"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">""</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"amount"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cardNo"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">43243</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"coffee_status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"picked_up"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cost"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"expires"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"2018-03-23"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"1"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"name"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"ming"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"next"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">""</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"paid"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"latte"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_payment"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"card"</span><span style="color: #990000"></span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+                <div class="sect2">
+                    <h3 id="release-order">release order return</h3>
+                    <div class="listingblock">
+                        <div class="content">
+<pre><tt><span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">"additions"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">""</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"amount"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cardNo"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">43243</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"coffee_status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"released"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"cost"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"expires"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"2018-03-23"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"id"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"1"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"name"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"ming"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"next"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">""</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"status"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"paid"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_coffee"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"latte"</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">"type_payment"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">"card"</span><span style="color: #990000"></span>
+    <span style="color: #FF0000">}</span></tt></pre></div></div>
+
+                <div class="sect2">
+                    <h3 id="delete-order">delete order return</h3>
+                    <div class="listingblock">
+                        <div class="content">
+<pre><tt><span style="color: #FF0000">"You have successfully deleted the order."</span></pre></div></div>
+
+            <div class="sect2">
+                <h3 id="error-payload">Error Return</h3>
+                <div class="paragraph"><p>When client dose not enter correct JSON type or JSON message, an error return looks like this:</p></div>
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"Data is not valid"</span>
+    </tt></pre></div></div>
+
+                <div class="paragraph"><p>We have our own menu which includes some coffee and the price of the specific coffee. If client orders the coffee that is not in the mene. A menu return looks like this:</p></div>
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt><span style="color: #FF0000">[
+    "sorry, we do not have what you order. The following is our menu."</span>
+    <span style="color: #FF0000">{</span>
+    <span style="color: #FF0000">Affogato</span> <span style="color: #990000">:</span> <span style="color: #FF0000">5</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Cappuccino</span> <span style="color: #990000">:</span> <span style="color: #FF0000">4</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Double Espresso</span> <span style="color: #990000">:</span> <span style="color: #FF0000">6</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Espresso</span> <span style="color: #990000">:</span> <span style="color: #FF0000">4</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Flat White</span> <span style="color: #990000">:</span> <span style="color: #FF0000">7</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Long Black"</span> <span style="color: #990000">:</span> <span style="color: #FF0000">6</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Long Macchiato</span> <span style="color: #990000">:</span> <span style="color: #FF0000">6</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Mocha</span> <span style="color: #990000">:</span> <span style="color: #FF0000">5</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Piccolo Latte</span> <span style="color: #990000">:</span> <span style="color: #FF0000">5</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Ristretto</span> <span style="color: #990000">:</span> <span style="color: #FF0000">5</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">Short Macchiato</span> <span style="color: #990000">:</span> <span style="color: #FF0000">7</span><span style="color: #990000">,</span>
+    <span style="color: #FF0000">latte</span> <span style="color: #990000">:</span> <span style="color: #FF0000">3</span><span style="color: #990000"></span>
+    <span style="color: #FF0000">}</span>
+    <span style="color: #FF0000">]</span>
+</tt></pre></div></div>
+
+            <div class="paragraph"><p>There are many situations that can return a false message, like:the order has been paid, you can not amend the order or The order dose not exist. Errors returns samples look like these:</p></div>
+            <div class="listingblock">
+                <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"You can not amend the order detail."</span>
+</tt></pre></div></div>
+
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"You can only pay the payment by cash or card or You have paid for the order."</span>
+</tt></pre></div></div>
+
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"Please fill out the card info and using correct type."</span>
+</tt></pre></div></div>
+
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"Your card has expired."</span>
+</tt></pre></div></div>
+
+
+                <div class="listingblock">
+                    <div class="content">
+<pre><tt>
+    <span style="color: #FF0000">"The order has been paid or the order dose not exist."</span>
+</tt></pre></div></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="requests">Requests</h2>
+        <div class="sectionbody">
+            <div class="paragraph"><p>All inputs sent from the client to the server MUST be valid JSON Media Type messages. </p></div>
+    </div>
+
+
+    <div class="sect1">
+        <h2 id="extensions">Extensions</h2>
+        <div class="sectionbody">
+            <div class="paragraph"><p>Clients are expected to strictly follow the rules of the documentation.</p></div>
+
+        </div>
+    </div>
+</div>
+<div id="footnotes"><hr /></div>
+
+</body>
+</html>
